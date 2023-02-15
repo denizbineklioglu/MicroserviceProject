@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\..\..\Shared\Catalog.Shared\Catalog.Shared.csproj" />
   </ItemGroup>
 
 </Project>

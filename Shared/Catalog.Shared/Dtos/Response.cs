@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace Catalog.Shared.Dtos
 {
-    public class ResponseDto<T>
+    public class Response<T>
     {
         public T Data { get; private set; }
 
@@ -21,19 +21,19 @@ namespace Catalog.Shared.Dtos
 
         // Static Factory Method
 
-        public static ResponseDto<T> Success(T data, int statusCode)
+        public static Response<T> Success(T data, int statusCode)
         {
-            return new ResponseDto<T> { Data = data, StatusCode = statusCode, IsSuccessful = true };
+            return new Response<T> { Data = data, StatusCode = statusCode, IsSuccessful = true };
         }
 
-        public static ResponseDto<T> Success(int statusCode)
+        public static Response<T> Success(int statusCode)
         {
-            return new ResponseDto<T> { Data = default(T), StatusCode = statusCode, IsSuccessful = true };
+            return new Response<T> { Data = default(T), StatusCode = statusCode, IsSuccessful = true };
         }
 
-        public static ResponseDto<T> Fail(List<string> errors, int statusCode)
+        public static Response<T> Fail(List<string> errors, int statusCode)
         {
-            return new ResponseDto<T>
+            return new Response<T>
             {
                 Errors = errors,
                 StatusCode = statusCode,
@@ -41,9 +41,9 @@ namespace Catalog.Shared.Dtos
             };
         }
 
-        public static ResponseDto<T> Fail(string error, int statusCode)
+        public static Response<T> Fail(string error, int statusCode)
         {
-            return new ResponseDto<T>
+            return new Response<T>
             {
                 Errors = new List<string>() { error },
                 StatusCode = statusCode,
